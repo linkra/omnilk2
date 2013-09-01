@@ -1,6 +1,7 @@
 package plan3.recruitment.backend.model;
 
 import java.util.List;
+import java.util.TreeSet;
 
 import com.google.common.base.Optional;
 
@@ -26,5 +27,5 @@ public interface PersonStorage {
     /**
      * Return all {@link Person}s in this {@link PersonStorage}
      */
-    public List<Person> list();
+    public TreeSet<Person> list();
 }

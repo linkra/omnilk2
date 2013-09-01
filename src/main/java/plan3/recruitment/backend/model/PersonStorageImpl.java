@@ -1,26 +1,25 @@
 package plan3.recruitment.backend.model;
 
 import com.google.common.base.Optional;
-import com.sun.xml.internal.stream.Entity;
 
-import javax.ws.rs.core.Response;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.TreeSet;
 
 /**
  * Created by lina on 2013-09-01.
  */
 public class PersonStorageImpl implements PersonStorage {
 
-    private ArrayList<Person> persons = new ArrayList<Person>();
+    private TreeSet<Person> persons = new TreeSet<Person>();
 
-    public ArrayList getPersons() {
+    public TreeSet getPersons() {
         return persons;
     }
 
     private void addPerson(Person person) {
         if (this.persons == null) {
-            this.persons = new ArrayList<Person>();
+            this.persons = new TreeSet<Person>();
         }
         persons.add(person);
     }
@@ -42,7 +41,7 @@ public class PersonStorageImpl implements PersonStorage {
 
     @Override
     @SuppressWarnings("unchecked")
-    public List<Person> list() {
+    public TreeSet<Person> list() {
         return getPersons();
     }
 }

@@ -29,7 +29,7 @@ public class PersonResource {
     public static final String APPLICATION_JSON_UTF8 = APPLICATION_JSON + "; charset=utf-8";
     private static final String EMAIL_PARAM = "email";
     private static final String EMAIL_PATH_PARAM = '{' + EMAIL_PARAM + '}';
-    private final PersonStorageImpl storage = new PersonStorageImpl();
+    private PersonStorageImpl storage = new PersonStorageImpl();
 
     @GET
     public Collection<Person> list() {
@@ -45,7 +45,7 @@ public class PersonResource {
     @PUT
     public Response save(final Person person, @Context final UriInfo uri) throws URISyntaxException{
         this.storage.save(person);
-        URI createdUri = new URI("/person/" + person.getEmail());
-        return Response.created(createdUri).build();
+        URI resourceUri = new URI("/" + person.getEmail());
+        return Response.created(resourceUri).build();
     }
 }
