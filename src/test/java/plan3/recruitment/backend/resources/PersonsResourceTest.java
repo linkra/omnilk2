@@ -53,13 +53,6 @@ public class PersonsResourceTest extends ResourceTest {
     }
 
     @Test
-    public void shouldFetchIan() {
-        Person ian = Person.valueOf("Ian", "Vännman", "ian@plan3.se");
-        WebResource client = client().resource("/person/ian@plan3.se");
-        assertEquals(ian, client.get(Person.class));
-    }
-
-    @Test
     public void fetchNonExistantReturns404() {
         ClientResponse response = client()
                 .resource("/person/a-non-existant-email-address-thats-not-even-valid")
@@ -79,10 +72,11 @@ public class PersonsResourceTest extends ResourceTest {
                 .put(ClientResponse.class, person);
 
         //assertSame(Status.CREATED.getStatusCode(), response.getStatus());
-        assertEquals(Status.CREATED.getStatusCode(), response.getStatus());
+       assertEquals(Status.CREATED.getStatusCode(), response.getStatus());
 
+        String location = response.getLocation().getPath();
         // Fetch the saved person based on the URI in the response
-        Person fetched = client().resource(response.getLocation()).get(Person.class);
+        Person fetched = client().resource(location).get(Person.class);
 
         assertEquals(person, fetched);
     }

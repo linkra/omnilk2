@@ -4,6 +4,7 @@ import com.google.common.base.Optional;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.TreeSet;
 
 /**
@@ -25,7 +26,15 @@ public class PersonStorageImpl implements PersonStorage {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public Optional<Person> fetch(String email) {
+        Iterator<Person> personIterator = getPersons().iterator();
+        while (personIterator.hasNext()) {
+            Person optPerson = personIterator.next();
+            if (optPerson.getEmail().equals(email)) {
+                return Optional.of(optPerson);
+            }
+        }
         return Optional.absent();
     }
 
