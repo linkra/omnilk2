@@ -12,3 +12,7 @@
            (regular `if` statements are fine)
 
 * Answers:
+1. The main effect was hat I had to refactor a lot.
+2. I think the readability is higher after applying the rules. I like also that there is more small entities than before.
+3. The JSON in the tests was a little bit tricky.
+

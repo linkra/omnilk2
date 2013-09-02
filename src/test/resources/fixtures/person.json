@@ -1,5 +1,10 @@
 {
-    "firstname": "first",
-    "lastname": "last",
-    "email": "first@last.se"
+    "personContact":  {
+                        "personName": {
+                                        "firstName": "first",
+                                        "lastName": "last"
+                                      } ,
+                        "emailAddress": "first@last.se"
+                      }
+
 }

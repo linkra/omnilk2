@@ -1,5 +1,7 @@
 package plan3.recruitment.backend.model.person;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /**
  * Created with IntelliJ IDEA.
  * User: lina
@@ -7,7 +9,9 @@ package plan3.recruitment.backend.model.person;
  * Time: 07:40
  */
 public class PersonName {
+    @JsonProperty
     protected final String firstName;
+    @JsonProperty
     protected final String lastName;
 
     public PersonName(String firstName, String lastName) {

@@ -4,7 +4,6 @@ import static com.yammer.dropwizard.testing.JsonHelpers.asJson;
 import static com.yammer.dropwizard.testing.JsonHelpers.fromJson;
 import static com.yammer.dropwizard.testing.JsonHelpers.jsonFixture;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
@@ -42,7 +41,6 @@ public abstract class AbstractJsonRoundTripTest<T> {
         catch(final Exception e) {
             throw new Exception("Can't deserialize:\n" + asJson(this.instance), e);
         }
-       // assertSame(clazz + " bad equals,", this.instance, deserialized);
         assertEquals(clazz + " bad equals,", this.instance, deserialized);
         assertEquals(clazz + " bad hashcode,", deserialized.hashCode(), this.instance.hashCode());
     }

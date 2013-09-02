@@ -30,7 +30,7 @@ public class PersonStorageImpl implements PersonStorage {
     }
 
     private boolean compareField(String email, Person optPerson) {
-        if (optPerson.email.equals(email)) return true;
+        if (optPerson.personContact.emailAddress.equals(email)) return true;
         return false;
     }
 
