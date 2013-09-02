@@ -1,4 +1,4 @@
-package plan3.recruitment.backend.resources;
+package plan3.recruitment.backend.model.person;
 
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 
@@ -17,9 +17,6 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
 import com.google.common.base.Optional;
-import plan3.recruitment.backend.model.Person;
-import plan3.recruitment.backend.model.PersonStorage;
-import plan3.recruitment.backend.model.PersonStorageImpl;
 
 @Path("person")
 @Produces(PersonResource.APPLICATION_JSON_UTF8)
@@ -45,7 +42,7 @@ public class PersonResource {
     @PUT
     public Response save(final Person person, @Context final UriInfo uri) throws URISyntaxException{
         this.storage.save(person);
-        URI resourceUri = new URI("/" + person.getEmail());
+        URI resourceUri = new URI("/" + person.email);
         return Response.created(resourceUri).build();
     }
 }

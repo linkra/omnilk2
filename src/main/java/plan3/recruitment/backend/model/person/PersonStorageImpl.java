@@ -1,9 +1,7 @@
-package plan3.recruitment.backend.model;
+package plan3.recruitment.backend.model.person;
 
 import com.google.common.base.Optional;
 
-import java.util.Collection;
-import java.util.Collections;
 import java.util.Iterator;
 import java.util.TreeSet;
 
@@ -19,9 +17,7 @@ public class PersonStorageImpl implements PersonStorage {
     }
 
     private void addPerson(Person person) {
-        if (this.persons == null) {
-            this.persons = new TreeSet<Person>();
-        }
+        if (this.persons == null) this.persons = new TreeSet<Person>();
         persons.add(person);
     }
 
@@ -29,13 +25,13 @@ public class PersonStorageImpl implements PersonStorage {
     @SuppressWarnings("unchecked")
     public Optional<Person> fetch(String email) {
         Iterator<Person> personIterator = getPersons().iterator();
-        while (personIterator.hasNext()) {
-            Person optPerson = personIterator.next();
-            if (optPerson.getEmail().equals(email)) {
-                return Optional.of(optPerson);
-            }
-        }
+        while(personIterator.hasNext()) { Person optPerson = personIterator.next(); if (compareField(email, optPerson)) return Optional.of(optPerson); }
         return Optional.absent();
+    }
+
+    private boolean compareField(String email, Person optPerson) {
+        if (optPerson.email.equals(email)) return true;
+        return false;
     }
 
     @Override

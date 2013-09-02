@@ -1,11 +1,11 @@
-package plan3.recruitment.backend.model;
+package plan3.recruitment.backend.model.person;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Person implements Comparable {
 
     @JsonProperty
-    private final String email;
+    protected final String email;
     @JsonProperty
     private final String firstname;
     @JsonProperty
@@ -24,19 +24,6 @@ public class Person implements Comparable {
         return this.firstname + ' ' + this.lastname + " [" + this.email + "] ";
     }
 
-    public String getFirstname() {
-        return firstname;
-    }
-
-    public String getLastname() {
-        return lastname;
-    }
-
-    public String getEmail() {
-        return this.email;
-
-    }
-
     // DO NOT REMOVE THIS METHOD. But feel free to adjust to suit your needs.
     public static Person valueOf(final String firstname, final String lastname, final String email) {
         return new Person(firstname, lastname, email);
@@ -49,17 +36,9 @@ public class Person implements Comparable {
 
         Person person = (Person) o;
 
-        if (this.email != null ? !this.email.equals(person.email) : person.email != null) {
-            return false;
-        }
-
-        if (!this.firstname.equals(person.firstname)) {
-            return false;
-        }
-
-        if (!this.lastname.equals(person.lastname)) {
-            return false;
-        }
+        if (this.email != null ? !this.email.equals(person.email) : person.email != null) return false;
+        if (!this.firstname.equals(person.firstname)) return false;
+        if (!this.lastname.equals(person.lastname)) return false;
 
         return true;
     }
@@ -74,10 +53,17 @@ public class Person implements Comparable {
 
     @Override
     public int compareTo(Object o) {
-        if (o instanceof Person) {
-          Person personToCompare = (Person) o;
-          return this.getLastname().compareTo(personToCompare.getLastname());
-        }
+        if (performComparing(o)) return evaluateInstance((Person) o);
         return -1;
+    }
+
+    private boolean performComparing(Object o) {
+        if (o instanceof Person) return true;
+        return false;
+    }
+
+    private int evaluateInstance(Person o) {
+        Person personToCompare = (Person) o;
+        return this.lastname.compareTo(personToCompare.lastname);
     }
 }

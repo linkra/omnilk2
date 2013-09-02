@@ -1,6 +1,5 @@
-package plan3.recruitment.backend.model;
+package plan3.recruitment.backend.model.person;
 
-import java.util.List;
 import java.util.TreeSet;
 
 import com.google.common.base.Optional;
