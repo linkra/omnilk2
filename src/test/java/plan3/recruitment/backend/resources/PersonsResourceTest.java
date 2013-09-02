@@ -20,7 +20,7 @@ import com.sun.jersey.api.client.WebResource;
 import com.yammer.dropwizard.testing.ResourceTest;
 import plan3.recruitment.backend.model.person.PersonContact;
 import plan3.recruitment.backend.model.person.PersonName;
-import plan3.recruitment.backend.model.person.PersonResource;
+import plan3.recruitment.backend.resources.PersonResource;
 
 public class PersonsResourceTest extends ResourceTest {
 

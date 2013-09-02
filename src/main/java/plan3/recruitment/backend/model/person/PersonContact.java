@@ -13,9 +13,9 @@ public class PersonContact {
     @JsonProperty
     protected final PersonName personName;
     @JsonProperty
-    protected final String emailAddress;
+    public final String emailAddress;
 
-    public PersonContact(PersonName personName, String emailAddress) {
+    public PersonContact(@JsonProperty("personName")PersonName personName, @JsonProperty("emailAddress")String emailAddress) {
         this.personName = personName;
         this.emailAddress = emailAddress;
     }

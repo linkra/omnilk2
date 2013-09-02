@@ -14,7 +14,7 @@ public class PersonName {
     @JsonProperty
     protected final String lastName;
 
-    public PersonName(String firstName, String lastName) {
+    public PersonName(@JsonProperty("firstName")String firstName, @JsonProperty("lastName")String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
     }

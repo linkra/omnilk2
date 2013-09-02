@@ -1,17 +1,16 @@
 package plan3.recruitment.backend.model.person;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Person implements Comparable {
 
     @JsonProperty
-    protected PersonContact personContact;
+    public PersonContact personContact;
 
-    public Person(PersonContact personContact) {
+    @JsonCreator
+    public Person(@JsonProperty("personContact")PersonContact personContact) {
         this.personContact = personContact;
-    }
-
-    public Person() {
     }
 
     @Override

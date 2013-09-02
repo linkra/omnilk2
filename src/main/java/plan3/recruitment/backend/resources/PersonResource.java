@@ -1,4 +1,4 @@
-package plan3.recruitment.backend.model.person;
+package plan3.recruitment.backend.resources;
 
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 
@@ -17,6 +17,8 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
 import com.google.common.base.Optional;
+import plan3.recruitment.backend.model.person.Person;
+import plan3.recruitment.backend.model.person.PersonStorageImpl;
 
 @Path("person")
 @Produces(PersonResource.APPLICATION_JSON_UTF8)
