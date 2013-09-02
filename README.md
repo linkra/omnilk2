@@ -67,3 +67,5 @@ And remember, this is meant to be fun.
     1. What effect did applying the rules have on your code?
     2. Anything that became better?
     3. Anything that became worse?
+
+
