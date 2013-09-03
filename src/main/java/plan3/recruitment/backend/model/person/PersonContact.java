@@ -9,16 +9,21 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * Time: 07:39
  */
 public class PersonContact {
-
     @JsonProperty
-    protected final PersonName personName;
+    private final PersonName personName;
     @JsonProperty
-    public final String emailAddress;
+    private final String emailAddress;
 
-    public PersonContact(@JsonProperty("personName")PersonName personName, @JsonProperty("emailAddress")String emailAddress) {
+    public PersonContact(@JsonProperty("personName")final PersonName personName, @JsonProperty("emailAddress")final String emailAddress) {
         this.personName = personName;
         this.emailAddress = emailAddress;
     }
 
+    public PersonName personName() {
+        return personName;
+    }
 
+    public String emailAddress() {
+        return emailAddress;
+    }
 }

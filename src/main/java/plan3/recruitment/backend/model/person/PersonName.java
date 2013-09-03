@@ -10,12 +10,20 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class PersonName {
     @JsonProperty
-    protected final String firstName;
+    private final String firstName;
     @JsonProperty
-    protected final String lastName;
+    private final String lastName;
 
-    public PersonName(@JsonProperty("firstName")String firstName, @JsonProperty("lastName")String lastName) {
+    public PersonName(@JsonProperty("firstName")final String firstName, @JsonProperty("lastName")final String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
+    }
+
+    public String firstName() {
+        return firstName;
+    }
+
+    public String lastName() {
+        return lastName;
     }
 }

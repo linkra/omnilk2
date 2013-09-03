@@ -2,25 +2,23 @@ package plan3.recruitment.backend.model.person;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.google.common.base.Objects;
 
 public class Person implements Comparable {
-
     @JsonProperty
     public PersonContact personContact;
 
     @JsonCreator
-    public Person(@JsonProperty("personContact")PersonContact personContact) {
+    public static Person valueOf(@JsonProperty("personContact")final PersonContact personContact) {
+        return new Person(personContact);
+    }
+
+    private Person(final PersonContact personContact) {
         this.personContact = personContact;
     }
 
-    @Override
-    public String toString() {
-        return personContact.personName.firstName + ' ' + personContact.personName.lastName + " [" + personContact.emailAddress + "] ";
-    }
-
-    // DO NOT REMOVE THIS METHOD. But feel free to adjust to suit your needs.
-    public static Person valueOf(final PersonContact personContact) {
-        return new Person(personContact);
+    public PersonContact personContact() {
+        return personContact;
     }
 
     @Override
@@ -28,20 +26,22 @@ public class Person implements Comparable {
         if (this == o) return true;
         if (!(o instanceof Person)) return false;
 
-        Person person = (Person) o;
+        final Person person = (Person) o;
 
-        if (this.personContact.emailAddress != null ? !this.personContact.emailAddress.equals(person.personContact.emailAddress) : person.personContact.emailAddress != null) return false;
-        if (!this.personContact.personName.firstName.equals(person.personContact.personName.firstName)) return false;
-        if (!this.personContact.personName.lastName.equals(person.personContact.personName.lastName)) return false;
+        if (personContact().emailAddress() != null ? !personContact().emailAddress().equals(person.personContact().emailAddress()) : person.personContact().emailAddress() != null) return false;
+        if (!personContact().personName().firstName().equals(person.personContact().personName().firstName())) return false;
+        if (!personContact().personName().lastName().equals(person.personContact().personName().lastName())) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = this.personContact.emailAddress != null ? this.personContact.emailAddress.hashCode() : 0;
-        result = 31 * result + this.personContact.personName.firstName.hashCode();
-        result = 41 * result + this.personContact.personName.lastName.hashCode();
+        int result = personContact().emailAddress() != null ? personContact().emailAddress().hashCode() : 0;
+
+        result = 31 * result + personContact().personName().firstName().hashCode();
+        result = 41 * result + personContact().personName().lastName().hashCode();
+
         return result;
     }
 
@@ -57,7 +57,13 @@ public class Person implements Comparable {
     }
 
     private int evaluateInstance(Person o) {
-        Person personToCompare = (Person) o;
-        return this.personContact.personName.lastName.compareTo(personToCompare.personContact.personName.lastName);
+        final Person personToCompare = (Person) o;
+
+        return personContact().personName().lastName().compareTo(personToCompare.personContact().personName().lastName());
+    }
+
+    @Override
+    public String toString() {
+        return Objects.toStringHelper(getClass()).add("personContact", personContact()).toString();
     }
 }

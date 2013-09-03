@@ -39,7 +39,7 @@ public class PersonResource {
     @PUT
     public Response save(final Person person, @Context final UriInfo uri) throws URISyntaxException{
         this.storage.save(person);
-        URI resourceUri = new URI("/" + person.personContact.emailAddress);
+        URI resourceUri = new URI("/" + person.personContact().emailAddress());
         return Response.created(resourceUri).build();
     }
 }
