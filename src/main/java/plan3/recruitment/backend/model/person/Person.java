@@ -52,8 +52,7 @@ public class Person implements Comparable {
     }
 
     private boolean performComparing(Object o) {
-        if (o instanceof Person) return true;
-        return false;
+        return o instanceof Person;
     }
 
     private int evaluateInstance(Person o) {

@@ -1,0 +1,9 @@
+* Answers:
+1. The main effect was hat I had to refactor a lot.
+It was hard to follow the rule about indention, specially for while-loops.
+2. I think the readability is higher after applying the rules. The encapsulation makes the objects less leaking.
+I like also that there is more small entities than before.
+3. The JSON in the tests was a little bit tricky. The use of @JsonCreator and @JsonProperty
+In the end I was unsure if I should have done a UI with input text fields for save a new person, but I don't think so.
+
+
