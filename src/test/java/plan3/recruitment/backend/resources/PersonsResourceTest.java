@@ -55,8 +55,8 @@ public class PersonsResourceTest extends ResourceTest {
     }
 
     public Person createTestPerson(String firstName, String lastName, String email) {
-        PersonName name = new PersonName(firstName, lastName);
-        PersonContact personContact = new PersonContact(name, email);
+        PersonName name = PersonName.valueOf(firstName, lastName);
+        PersonContact personContact = PersonContact.valueOf(name, email);
         return Person.valueOf(personContact);
     }
 

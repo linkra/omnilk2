@@ -14,7 +14,11 @@ public class PersonContact {
     @JsonProperty
     private final String emailAddress;
 
-    public PersonContact(@JsonProperty("personName")final PersonName personName, @JsonProperty("emailAddress")final String emailAddress) {
+    public static PersonContact valueOf(@JsonProperty("personName")final PersonName personName, @JsonProperty("emailAddress")final String emailAddress) {
+        return new PersonContact(personName, emailAddress);
+    }
+
+    private PersonContact(@JsonProperty("personName")final PersonName personName, @JsonProperty("emailAddress")final String emailAddress) {
         this.personName = personName;
         this.emailAddress = emailAddress;
     }

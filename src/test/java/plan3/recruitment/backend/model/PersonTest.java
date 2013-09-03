@@ -8,8 +8,8 @@ import plan3.recruitment.backend.model.person.PersonName;
 public class PersonTest extends AbstractJsonRoundTripTest<Person> {
     @Override
     public Person createInstance() {
-        PersonName name = new PersonName("first", "last");
-        PersonContact personContact = new PersonContact(name, "first@last.se");
+        PersonName name = PersonName.valueOf("first", "last");
+        PersonContact personContact = PersonContact.valueOf(name, "first@last.se");
         return Person.valueOf(personContact);
     }
 }

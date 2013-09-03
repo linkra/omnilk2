@@ -6,7 +6,7 @@ import com.google.common.base.Objects;
 
 public class Person implements Comparable {
     @JsonProperty
-    public PersonContact personContact;
+    private PersonContact personContact;
 
     @JsonCreator
     public static Person valueOf(@JsonProperty("personContact")final PersonContact personContact) {

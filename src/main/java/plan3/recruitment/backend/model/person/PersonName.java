@@ -14,7 +14,11 @@ public class PersonName {
     @JsonProperty
     private final String lastName;
 
-    public PersonName(@JsonProperty("firstName")final String firstName, @JsonProperty("lastName")final String lastName) {
+    public static PersonName valueOf(@JsonProperty("firstName")final String firstName, @JsonProperty("lastName")final String lastName) {
+        return new PersonName(firstName, lastName);
+    }
+
+    private PersonName(@JsonProperty("firstName")final String firstName, @JsonProperty("lastName")final String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
     }
